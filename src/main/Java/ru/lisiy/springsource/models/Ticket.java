@@ -3,9 +3,7 @@ package ru.lisiy.springsource.models;
 public class Ticket {
 private int id;
 private String ticketName;
-private String personFirstname;
-private String personLastname;
-private String personEmail;
+private int personId;
 
     public int getId() {
         return id;
@@ -23,27 +21,11 @@ private String personEmail;
         this.ticketName = ticketName;
     }
 
-    public String getPersonFirstname() {
-        return personFirstname;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setPersonFirstname(String personFirstname) {
-        this.personFirstname = personFirstname;
-    }
-
-    public String getPersonLastname() {
-        return personLastname;
-    }
-
-    public void setPersonLastname(String personLastname) {
-        this.personLastname = personLastname;
-    }
-
-    public String getPersonEmail() {
-        return personEmail;
-    }
-
-    public void setPersonEmail(String personEmail) {
-        this.personEmail = personEmail;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 }

@@ -1,6 +1,7 @@
 package ru.lisiy.springsource.dao;
 
 import org.springframework.stereotype.Component;
+import ru.lisiy.springsource.models.Person;
 import ru.lisiy.springsource.models.Ticket;
 
 import java.sql.*;
@@ -40,9 +41,6 @@ public class TicketDAO {
 
                 ticket.setId(resultSet.getInt("Ticket_id"));
                 ticket.setTicketName(resultSet.getString("Ticket_Name"));
-                ticket.setPersonFirstname(resultSet.getString("Person_Firstname"));
-                ticket.setPersonLastname(resultSet.getString("Person_Lastname"));
-                ticket.setPersonEmail(resultSet.getString("Person_Email"));
 
                 tickets.add(ticket);
             }
@@ -51,5 +49,19 @@ public class TicketDAO {
         }
 
         return tickets;
+    }
+
+    public void update(int id, Person person){
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("UPDATE tickets " +
+                            "SET Ticket_Name='Занято', Person_id=? " +
+                            "WHERE Ticket_id=?");
+            preparedStatement.setInt(1, person.getId());
+            preparedStatement.setInt(2, id);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
