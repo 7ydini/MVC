@@ -1,4 +1,4 @@
-package ru.lisiy.springsource.controllers;
+package ru.lisiy.springsource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ public class Controller {
         this.personDAO = personDAO;
     }
 
-    @GetMapping("/place")
+    @GetMapping()
     public String index(Model model){
         model.addAttribute("ticket", ticketDAO.index());
         return "ticket/index";

@@ -19,7 +19,7 @@ public class TicketDAO {
 
     static {
         try {
-            Class.forName("mysql.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -34,13 +34,14 @@ public class TicketDAO {
         List<Ticket> tickets = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            String SQL = "SELECT * FROM Ticket";
+            String SQL = "SELECT * FROM tickets";
             ResultSet resultSet = statement.executeQuery(SQL);
             while(resultSet.next()){
                 Ticket ticket = new Ticket();
 
                 ticket.setId(resultSet.getInt("Ticket_id"));
                 ticket.setTicketName(resultSet.getString("Ticket_Name"));
+                ticket.setPersonId(resultSet.getInt("Person_id"));
 
                 tickets.add(ticket);
             }

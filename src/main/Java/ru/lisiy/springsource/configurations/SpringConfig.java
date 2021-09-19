@@ -18,20 +18,23 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
+
     @Autowired
-    public SpringConfig(ApplicationContext applicationContext){
+    public SpringConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
+
     @Bean
-    public SpringResourceTemplateResolver templateResolver(){
+    public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
         templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
         return templateResolver;
     }
+
     @Bean
-    public SpringTemplateEngine templateEngine(){
+    public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
@@ -39,7 +42,7 @@ public class SpringConfig implements WebMvcConfigurer {
     }
 
     @Override
-    public void configureViewResolvers(ViewResolverRegistry registry){
+    public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);

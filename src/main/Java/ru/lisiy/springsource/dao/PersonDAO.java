@@ -17,7 +17,7 @@ public class PersonDAO {
 
     static {
         try {
-            Class.forName("mysql.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -60,7 +60,7 @@ public class PersonDAO {
             person.setId(resultSet.getInt("id"));
             person.setName(resultSet.getString("name"));
             person.setSurname(resultSet.getString("surname"));
-            person.setEmail(resultSet.getString("email"));
+            //person.setEmail(resultSet.getString("email"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
