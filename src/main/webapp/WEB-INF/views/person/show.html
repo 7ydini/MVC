@@ -5,8 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<div th:each="person: ${person}">
-    <a th:href="@{/tickets/{id}(id=${person.getId()})}" th:text="${person.getName()}">user</a>
-</div>
+<a th:text="${person.getId()}">VALUE</a>
+<a th:text="${person.getName()}">VALUE</a>
+<a th:text="${person.getSurname()}">VALUE</a>
 </body>
 </html>

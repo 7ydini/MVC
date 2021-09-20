@@ -34,7 +34,7 @@ public class TicketDAO {
         List<Ticket> tickets = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            String SQL = "SELECT * FROM tickets";
+            String SQL = "SELECT tickets.*, person.id, person.name, person.surname FROM tickets LEFT JOIN person ON tickets.Person_id=person.id";
             ResultSet resultSet = statement.executeQuery(SQL);
             while(resultSet.next()){
                 Ticket ticket = new Ticket();

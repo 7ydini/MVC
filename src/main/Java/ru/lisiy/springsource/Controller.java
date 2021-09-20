@@ -27,9 +27,12 @@ public class Controller {
         return "ticket/index";
     }
 
-    @GetMapping("/{id}}")
+    @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
-        model.addAttribute("ticket", personDAO.show(id));
+        if(personDAO.show(id).getId() == 0){
+            return "person/create";
+        }
+        model.addAttribute("person", personDAO.show(id));
         return "person/show";
     }
 

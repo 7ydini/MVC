@@ -918,6 +918,7 @@ SELECT|sys.sys_config
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="288" parent="285" name="name">
       <Position>2</Position>

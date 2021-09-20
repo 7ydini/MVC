@@ -53,14 +53,17 @@ public class PersonDAO {
         Person person = null;
         try {
             PreparedStatement preparedStatement =
-                    connection.prepareStatement("SELECT person.id, person.name, person.surname FROM person WHERE person.id=?");
+                    connection.prepareStatement("SELECT tickets.*, person.*" +
+                            "FROM tickets LEFT JOIN person ON tickets.Person_id=person.id " +
+                            "WHERE tickets.Ticket_id=?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             person = new Person();
             person.setId(resultSet.getInt("id"));
             person.setName(resultSet.getString("name"));
             person.setSurname(resultSet.getString("surname"));
-            //person.setEmail(resultSet.getString("email"));
+            person.setEmail(resultSet.getString("email"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
