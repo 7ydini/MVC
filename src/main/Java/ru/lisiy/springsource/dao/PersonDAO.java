@@ -72,12 +72,12 @@ public class PersonDAO {
     public void save(Person person){
         try {
             PreparedStatement preparedStatement =
-                    connection.prepareStatement("INSERT INTO Person VALUES(?, ?, ?, ?)");
-            preparedStatement.setInt(1, person.getId());
-            preparedStatement.setString(2, person.getName());
-            preparedStatement.setString(3, person.getSurname());
-            preparedStatement.setString(4,person.getEmail());
-
+                    connection.prepareStatement("INSERT INTO Person(name, surname, email) VALUES(?, ?, ?)");
+            //preparedStatement.setInt(1, person.getId());
+            preparedStatement.setString(1, person.getName());
+            preparedStatement.setString(2, person.getSurname());
+            preparedStatement.setString(3,person.getEmail());
+            preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

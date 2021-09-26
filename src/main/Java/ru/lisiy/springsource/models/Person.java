@@ -6,6 +6,15 @@ public class Person {
     private String surname;
     private String email;
 
+    public Person(){
+    }
+    public Person(int id, String name, String surname, String email) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

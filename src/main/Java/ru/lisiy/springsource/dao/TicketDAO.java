@@ -56,11 +56,11 @@ public class TicketDAO {
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("UPDATE tickets " +
-                            "SET Ticket_Name='Занято', Person_id=? " +
+                            "SET Ticket_Name='Closed', Person_id=? " +
                             "WHERE Ticket_id=?");
             preparedStatement.setInt(1, person.getId());
             preparedStatement.setInt(2, id);
-
+            preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
