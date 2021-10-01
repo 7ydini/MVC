@@ -5,17 +5,17 @@
     <title>New person</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/tickets/${id}/new}" th:object="${person}">
+<form th:method="PATCH" th:action="@{/tickets/${id}(id=${id})/update}" th:object="${person}">
     <label for="name">Enter name:</label>
-    <input type="text" th:field="*{name}" id="name"/>
+    <input id="name" th:field="*{name}" type="text"/>
     <br/>
     <label for="surname">Enter surname:</label>
-    <input type="text" th:field="*{surname}" id="surname"/>
+    <input id="surname" th:field="*{surname}" type="text"/>
     <br/>
     <label for="email">Enter email:</label>
-    <input type="text" th:field="*{email}" id="email"/>
+    <input id="email" th:field="*{email}" type="text"/>
     <br/>
-    <input type="submit" th:value="Take ${id} ticket!">
+    <input type="submit" value="Take ticket!">
 </form>
 </body>
 </html>

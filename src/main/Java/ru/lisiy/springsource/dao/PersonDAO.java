@@ -2,7 +2,6 @@ package ru.lisiy.springsource.dao;
 
 import org.springframework.stereotype.Component;
 import ru.lisiy.springsource.models.Person;
-import ru.lisiy.springsource.models.Ticket;
 
 import java.sql.*;
 import java.util.ArrayList;

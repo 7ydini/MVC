@@ -29,7 +29,7 @@ public class Controller {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
         if(personDAO.show(id).getId() == 0){
-            return "redirect:/tickets/"+id+"/new";
+            return "redirect:/tickets/{id}/new";
         }
         model.addAttribute("person", personDAO.show(id));
         return "person/show";
@@ -42,7 +42,7 @@ public class Controller {
         return "person/create";
     }
 
-    @PostMapping("/{id}/new")
+    @PatchMapping("/{id}/update")
     public String create(@PathVariable("id") int id, @ModelAttribute("person") Person person){
         personDAO.save(person);
         ticketDAO.update(id, person);
